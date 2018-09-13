@@ -1,20 +1,29 @@
 class Sulotion:
     def searchRange(self, nums, target):
+        indicies = []
+        while len(indicies) < 2:
+            position = self.positions(nums, target)
+            if type(position) is list:
+                return [-1, -1]
+            indicies.append(position)
+        indicies.sort()
+        return indicies
+
+
+    def positions(self, nums, target):
         range_list = []
         lo = 0
         hi = len(nums) - 1
         while lo <= hi:
             mid = (lo + hi) // 2
             if nums[mid] == target:
-                range_list.append(mid)
-            if target < nums[mid]:
+                del nums[mid]
+                return mid
+            elif target < nums[mid]:
                 hi = mid - 1
             else :
                 lo = mid + 1
-        if range_list is None:
-            return [-1,-1]
-        else:
-            return range_list
+        return [-1, -1]
 c = Sulotion()
-kis = c.searchRange([5,7,7,8,8,10],8)
+kis = c.searchRange([1],1)
 print(kis)
