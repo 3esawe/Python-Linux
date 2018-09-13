@@ -4,13 +4,18 @@ class Sulotion:
         while len(indicies) < 2:
             position = self.positions(nums, target)
             if type(position) is list:
-                return [-1, -1]
+                if -1 in position:
+                    return [-1, -1]
+                else:
+                    return [0, 0]
             indicies.append(position)
         indicies.sort()
         return indicies
 
 
     def positions(self, nums, target):
+        if len(nums) == 1 and target in nums:
+            return [0, 0]
         range_list = []
         lo = 0
         hi = len(nums) - 1
