@@ -11,12 +11,11 @@ class Sulotion:
             else :
                 return [self.first(nums, 0, mid, target), self.last(nums, mid, len(nums)- 1, target)]
 
-
         return [-1, -1]
 
 
     def first(self, nums, lo, hi, target):
-        while lo < hi:
+        while lo <= hi:
             mid = (hi + lo) // 2
             if  target > nums[mid]:
                 lo = mid +1
@@ -28,7 +27,7 @@ class Sulotion:
 
 
     def last(self, nums, lo, hi, target):
-        while lo < hi:
+        while lo <= hi:
             mid = (hi + lo) // 2
             if target < nums[mid]:
                 hi = mid + 1
@@ -38,5 +37,5 @@ class Sulotion:
                 lo = mid - 1
         return hi
 c = Sulotion()
-kis = c.searchRange([5,7,7,8,8,10],8)
+kis = c.searchRange([2,2],2)
 print(kis)
