@@ -11,13 +11,24 @@ class Solution:
         :type l2: ListNode
         :rtype: ListNode
         """
-        newNode = ListNode(None)
+        if l1 is None:
+            return l2
+        if l2 is None:
+            return l1    
+        newNode = ListNode(0)
+        p = newNode
         while l1 is not None and l2 is not None:
             if l1.val <= l2.val:
-                newNode.next = l1
-            elif l1.val >= l2.val:
-                newNode.next = l2
-            else:
+                p.next = l1
                 l1 = l1.next
+            elif l1.val >= l2.val:
+                p.next= l2
                 l2 = l2.next
-            return newNode
+            p = p.next
+            if l1 is None:
+                p.next = l2
+                break
+            if l2 is None:
+                p.next = l1
+                break
+        return newNode.next
