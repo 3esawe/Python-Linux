@@ -3,11 +3,14 @@ def longestCommonPrefix (strs):
         :type strs: List[str]
         :rtype: str
         """
-        rstr = ""
-        for i in strs:
-            for j in i:
-                if j in i:
-                    rstr += j
-        return rstr
+        if not strs:
+            return ""
+        shortest = min(strs,key=len)
+        for i, ch in enumerate(shortest):
+            for other in strs:
+                if other[i] != ch:
+                    return shortest[:i]
+        return shortest
+                             
 if __name__ == '__main__':
     print(longestCommonPrefix(["flower","flow","flight"]))
