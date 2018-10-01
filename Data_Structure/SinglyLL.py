@@ -66,14 +66,42 @@ class SinglyLL:
         while temp is not None:
             print(temp.value)
             temp = temp.next
+
+    def search(self, value):
+        temp = self.head
+        while temp is not None:
+            if temp.value == value:
+                return True
+            else:
+                temp = temp.next
+        return False
+
+    def removeDuplicate(self):
+        temp = self.head
+        if self.head is None:
+            return
+
+        while temp.next is not None:
+            if temp.value == temp.next.value:
+                next_node = temp.next.next
+                temp.next = None
+                temp.next = next_node
+            else:
+                temp = temp.next
+        self._size -= 1        
     @property
     def size(self):
         return f"size is: {self._size}"
+
+
+
 nodeC = SinglyLL()
 nodeC.insert_first(5)
 nodeC.insert_first(7)
 nodeC.insert_first(8)
 nodeC.insert_at_position("omar",4)
-nodeC.delete(5)
+print(nodeC.search(8))
+nodeC.insert_at_position(5,1)
+nodeC.removeDuplicate()
 nodeC.printnodes()
 print(nodeC.size)
