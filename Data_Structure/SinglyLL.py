@@ -88,7 +88,18 @@ class SinglyLL:
                 temp.next = next_node
             else:
                 temp = temp.next
-        self._size -= 1        
+        self._size -= 1       
+
+    def reverse(self):
+        prev  = None
+        curr = self.head
+        nextpoint = None 
+        while curr:
+            nextpoint = curr.getNext()
+            curr.setNext(prev)
+            prev  = curr 
+            curr = nextpoint
+        self.head = prev 
     @property
     def size(self):
         return f"size is: {self._size}"
