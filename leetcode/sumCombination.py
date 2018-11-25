@@ -23,5 +23,5 @@ class Solution:
                 combination_set.append(sum_list)
         return combination_set
 c = Solution()
-v = c.sumComb([2,3,5], 8)
+v = c.sumComb([2,3,6,7], 7)
 print(v)
